@@ -2,13 +2,13 @@ pipeline {
     agent any
 
     stages {
-        sh echo ${env.BUILD_NUMBER}
-        sh echo $env.BUILD_NUMBER
-        sh echo $BUILD_NUMBER
         //sh def buildNumber=${env.BUILD_NUMBER}
         stage('Build') {
             steps {
             sh '''
+                echo ${env.BUILD_NUMBER}
+                echo $env.BUILD_NUMBER
+                echo $BUILD_NUMBER
                 docker build -t amir-roberta:${buildNumber} .
             '''
                 sh 'ls'
