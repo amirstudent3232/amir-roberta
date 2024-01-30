@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        def buildNumber = env.BUILD_NUMBER
+        def buildNumber=env.BUILD_NUMBER
         stage('Build') {
             steps {
             sh '''
