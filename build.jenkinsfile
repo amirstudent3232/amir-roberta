@@ -15,7 +15,7 @@ pipeline {
                 sh 'echo building new image...'
             }
         }
-        stage('uploade image to dockerhub') {
+        stage('uploade image to dockerhub   :') {
             steps {
             sh'''
                 docker push amirstudent3232/robertaimages:${buildNumber}
