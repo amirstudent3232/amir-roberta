@@ -7,7 +7,8 @@ pipeline {
             steps {
             sh '''
                 echo ${BUILD_NUMBER}
-                docker build -t amir-roberta:01 .
+                docker build -t amir-roberta:${BUILD_NUMBER} .
+                docker tag amir-roberta:${BUILD_NUMBER} amirstudent3232/robertaimages:${BUILD_NUMBER}
             '''
                 sh 'ls'
                 sh 'echo building new image...'
@@ -16,7 +17,7 @@ pipeline {
         stage('uploade image to dockerhub   :') {
             steps {
             sh'''
-                docker push amirstudent3232/robertaimages:01
+                docker push amirstudent3232/robertaimages:${BUILD_NUMBER}
             '''
             }
         }
