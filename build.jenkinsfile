@@ -6,9 +6,7 @@ pipeline {
         stage('Build') {
             steps {
             sh '''
-                echo ${env.BUILD_NUMBER}
-                echo $env.BUILD_NUMBER
-                echo $BUILD_NUMBER
+                echo ${BUILD_NUMBER}
                 docker build -t amir-roberta:${buildNumber} .
             '''
                 sh 'ls'
