@@ -2,10 +2,11 @@ pipeline {
     agent any
 
     stages {
+        def buildNumber = env.BUILD_NUMBER
         stage('Build') {
             steps {
             sh '''
-                docker build -t amir-roberta:${env.BUILD_NUMBER} .
+                docker build -t amir-roberta:${buildNumber} .
             '''
                 sh 'ls'
                 sh 'echo building new image...'
@@ -14,7 +15,7 @@ pipeline {
         stage('uploade image to dockerhub') {
             steps {
             sh'''
-                docker push amirstudent3232/robertaimages:${env.BUILD_NUMBER}
+                docker push amirstudent3232/robertaimages:${buildNumber}
             '''
             }
         }
