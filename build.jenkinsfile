@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    environment{
+        DOCKER_CREDENTIALS = Credentials('dockerhub')
+    }
     stages {
         //sh def buildNumber=${env.BUILD_NUMBER}
         stage('Build') {
@@ -15,7 +17,6 @@ pipeline {
         stage('uploade image to dockerhub:') {
             steps {
             sh'''
-                DOCKER_CREDENTIALS = Credentials{'dockerhub'}
                 echo $DOCKER_CREDENTIALS_PSW | docker login -u $DOCKER_CREDENTIALS_USR --password-stdin
                 docker login
                 docker push amirstudent3232/robertaimages:${BUILD_NUMBER}
