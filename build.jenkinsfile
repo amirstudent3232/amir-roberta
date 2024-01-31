@@ -23,13 +23,12 @@ pipeline {
             '''
             }
         }
-        post {
-            alawys {
-                script {
-                sh '''
-                    docker image prune --force
-                    '''
-                }
+    post {
+        alawys {
+            script {
+            sh '''
+                docker image prune --force
+                '''
             }
         }
     }
