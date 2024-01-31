@@ -15,6 +15,7 @@ pipeline {
         stage('uploade image to dockerhub   :') {
             steps {
             sh'''
+                docker login
                 docker push amirstudent3232/robertaimages:${BUILD_NUMBER}
             '''
             }
