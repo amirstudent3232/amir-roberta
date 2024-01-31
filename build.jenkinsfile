@@ -25,9 +25,11 @@ pipeline {
         }
         post {
             alawys {
-            sh '''
-                sh docker image prune --force
-                '''
+                script {
+                sh '''
+                    sh docker image prune --force
+                    '''
+                }
             }
         }
     }
