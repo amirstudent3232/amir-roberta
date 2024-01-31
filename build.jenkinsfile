@@ -15,6 +15,8 @@ pipeline {
         stage('uploade image to dockerhub:') {
             steps {
             sh'''
+                DOCKER_CREDENTIALS = Credentials ('dockerhub')
+                echo $DOCKER_CREDENTIALS_PSW | docker login -u $DOCKER_CREDENTIALS_USR --password-stdin
                 docker login
                 docker push amirstudent3232/robertaimages:${BUILD_NUMBER}
             '''
