@@ -8,6 +8,7 @@ pipeline {
         stage('Build') {
             steps {
             sh '''
+                pwd
                 echo ${BUILD_NUMBER}
                 docker build -t amir-roberta:${BUILD_NUMBER} .
                 docker tag amir-roberta:${BUILD_NUMBER} amirstudent3232/robertaimages:${BUILD_NUMBER}
