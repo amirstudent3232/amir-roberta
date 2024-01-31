@@ -27,7 +27,7 @@ pipeline {
             alawys {
                 script {
                 sh '''
-                    sh docker image prune --force
+                    docker image prune --force
                     '''
                 }
             }
