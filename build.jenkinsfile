@@ -23,5 +23,8 @@ pipeline {
             '''
             }
         }
+        post('delete images') {
+        sh docker image prune --force
+        }
     }
 }
