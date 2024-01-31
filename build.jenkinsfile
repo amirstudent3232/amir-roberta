@@ -24,7 +24,7 @@ pipeline {
             }
         }
         post {
-            steps {
+            alawys {
             sh '''
                 sh docker image prune --force
                 '''
