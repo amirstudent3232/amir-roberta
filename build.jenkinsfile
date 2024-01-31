@@ -23,6 +23,7 @@ pipeline {
             '''
             }
         }
+    }
     post {
         alawys {
             script {
@@ -32,5 +33,4 @@ pipeline {
             }
         }
     }
-}
 }
