@@ -7,8 +7,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 // complete this code to deploy to real k8s cluster
-                echo ${ROBERTA_IMAGE_URL}
-                sh '# kubectl apply -f ....'
+                echo $ROBERTA_IMAGE_URL
+                //sh '# kubectl apply -f ....'
             }
         }
     }
