@@ -35,7 +35,7 @@ pipeline {
         }
         stage('Trigger Deploy job') {
             steps {
-                def deploy_job=build job: 'robertaDeploy', wait: false, parameters: [
+                string deploy_job=build job: 'robertaDeploy', wait: false, parameters: [
                     string(name: 'ROBERTA_IMAGE_URL', value: "${IMAGE_URL}:${BUILD_NUMBER}")
                 ]
                 sh '''
