@@ -27,17 +27,15 @@ pipeline {
         stage('Trigger Deploy') {
             steps {
                 build job: 'robertaDeploy', wait: false, parameters: [
-                string(name: 'ROBERTA_IMAGE_URL', value: "${IMAGE_URL}:${BUILD_NUMBER}")
-        ]
-    }
-}
-
-    }
-    post {
-        always {
-            script {
-            sh '''
-                docker image prune -a --force
+                    string(name: 'ROBERTA_IMAGE_URL', value: "${IMAGE_URL}:${BUILD_NUMBER}")
+                ]
+            }
+        }
+        post {
+            always {
+                script {
+                sh '''
+                    docker image prune -a --force
                 '''
             }
         }
