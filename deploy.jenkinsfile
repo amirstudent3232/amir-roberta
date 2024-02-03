@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+    environment{
+        DOCKER_CREDENTIALS = credentials('jenkinstoken')
+    }
+    parameters {
+        string(name: 'ROBERTA_IMAGE_URL', defaultValue: '', description: '')
+    }
+
+    stages {
+        //sh def buildNumber=${env.BUILD_NUMBER}
+        stage('Build') {
+            steps {
+                stage('Deploy') {
+                    steps {
+                        // complete this code to deploy to real k8s cluster
+                        echo $ROBERTA_IMAGE_URL
+                        sh '# kubectl apply -f ....'
+                    }
+                }
+            }
+        }
+    }
+}

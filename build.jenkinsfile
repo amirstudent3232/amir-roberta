@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment{
         DOCKER_CREDENTIALS = credentials('jenkinstoken')
+        IMAGE_URL = "amirstudent3232/robertaimages:"
     }
     stages {
         //sh def buildNumber=${env.BUILD_NUMBER}
@@ -11,7 +12,7 @@ pipeline {
                 pwd
                 echo ${BUILD_NUMBER}
                 docker build -t amir-roberta:${BUILD_NUMBER} .
-                docker tag amir-roberta:${BUILD_NUMBER} amirstudent3232/robertaimages:${BUILD_NUMBER}
+                docker tag amir-roberta:${BUILD_NUMBER} $IMAGE_URL:${BUILD_NUMBER}
             '''
             }
         }
@@ -19,16 +20,24 @@ pipeline {
             steps {
             sh'''
                 echo $DOCKER_CREDENTIALS_PSW | docker login -u $DOCKER_CREDENTIALS_USR --password-stdin
-                docker push amirstudent3232/robertaimages:${BUILD_NUMBER}
+                docker push $IMAGE_URL:${BUILD_NUMBER}
             '''
             }
         }
+        stage('Trigger Deploy') {
+            steps {
+                build job: 'deploy.jenkinsfile', wait: false, parameters: [
+                string(name: 'ROBERTA_IMAGE_URL', value: "${IMAGE_URL}:${BUILD_NUMBER}")
+        ]
+    }
+}
+
     }
     post {
         always {
             script {
             sh '''
-                docker image prune --force
+                docker image prune -a --force
                 '''
             }
         }
