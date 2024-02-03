@@ -9,15 +9,11 @@ pipeline {
 
     stages {
         //sh def buildNumber=${env.BUILD_NUMBER}
-        stage('Build') {
+        stage('Deploy') {
             steps {
-                stage('Deploy') {
-                    steps {
-                        // complete this code to deploy to real k8s cluster
-                        echo $ROBERTA_IMAGE_URL
-                        sh '# kubectl apply -f ....'
-                    }
-                }
+                // complete this code to deploy to real k8s cluster
+                echo $ROBERTA_IMAGE_URL
+                sh '# kubectl apply -f ....'
             }
         }
     }
