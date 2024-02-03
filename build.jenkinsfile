@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Trigger Deploy') {
             steps {
-                build job: 'deploy.jenkinsfile', wait: false, parameters: [
+                build job: 'robertaDeploy', wait: false, parameters: [
                 string(name: 'ROBERTA_IMAGE_URL', value: "${IMAGE_URL}:${BUILD_NUMBER}")
         ]
     }
