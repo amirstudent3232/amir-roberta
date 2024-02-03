@@ -23,6 +23,15 @@ pipeline {
                 docker push $IMAGE_URL:${BUILD_NUMBER}
             '''
             }
+            post {
+                always {
+                    script {
+                    sh '''
+                        docker image prune -a --force
+                    '''
+                    }
+                }
+            }
         }
         stage('Trigger Deploy job') {
             steps {
@@ -35,15 +44,6 @@ pipeline {
                         exit 1
                     }
                 '''
-            }
-        }
-        post {
-            always {
-                script {
-                sh '''
-                    docker image prune -a --force
-                '''
-                }
             }
         }
     }
