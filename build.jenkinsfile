@@ -26,9 +26,15 @@ pipeline {
         }
         stage('Trigger Deploy job') {
             steps {
-                build job: 'robertaDeploy', wait: false, parameters: [
+                deploy_job = build job: 'robertaDeploy', wait: false, parameters: [
                     string(name: 'ROBERTA_IMAGE_URL', value: "${IMAGE_URL}:${BUILD_NUMBER}")
                 ]
+                sh '''
+                    if [[deploy_job == "FAILURE"]}
+                    then {
+                        exit 1
+                    }
+                '''
             }
         }
         post {
