@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment{
         DOCKER_CREDENTIALS = credentials('jenkinstoken')
-        IMAGE_URL = "amirstudent3232/robertaimages:"
+        IMAGE_URL = "amirstudent3232/robertaimages"
     }
     stages {
         //sh def buildNumber=${env.BUILD_NUMBER}
