@@ -39,10 +39,11 @@ pipeline {
                     string(name: 'ROBERTA_IMAGE_URL', value: "${IMAGE_URL}:${BUILD_NUMBER}")
                 ]
                 sh '''
-                    if [[deploy_job == "FAILURE"]}
+                    if [[ deploy_job == "FAILURE" ]]
                     then {
                         exit 1
                     }
+                    fi
                 '''
             }
         }
