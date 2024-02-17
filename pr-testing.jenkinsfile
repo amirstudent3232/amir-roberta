@@ -28,8 +28,9 @@ pipeline {
                     aggregatingResults: true,
                     tools: [pyLint(name: 'Pylint', pattern: '**/pylint.log')]
                     )
-              }
+                }
             }
+        }
         stage('Functional test') {
             steps {
                 sh 'echo "testing"'
