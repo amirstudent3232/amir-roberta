@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Unittest    ') {
+        stage('Unittest') {
             steps {
                 sh '''
                 echo "testing"
@@ -16,7 +16,7 @@ pipeline {
                 }
             }
         }
-        stage('Lint') {
+        stage('Lint    ') {
             steps {
                 sh 'python3 -m pylint *.py'
             }
