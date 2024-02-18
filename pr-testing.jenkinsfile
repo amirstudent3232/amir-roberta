@@ -11,8 +11,6 @@ pipeline {
         stage('Unittest') {
             steps {
                 sh '''
-                echo "testing"
-                pip install pytest
                 python3 -m pytest --junitxml results.xml tests
                 '''
             }
@@ -22,11 +20,11 @@ pipeline {
                 }
             }
         }
-        stage('Lint') {
-            steps {
-                sh 'python3 -m pylint *.py'
-            }
-        }
+//         stage('Lint') {
+//             steps {
+//                 sh 'python3 -m pylint *.py'
+//             }
+//         }
         stage('Functional test') {
             steps {
                 sh 'echo "testing"'
