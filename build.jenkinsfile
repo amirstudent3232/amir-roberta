@@ -27,7 +27,7 @@ pipeline {
                 always {
                     script {
                     sh '''
-                        docker image prune -a --force
+                        docker system prune -a --force
                     '''
                     }
                 }
