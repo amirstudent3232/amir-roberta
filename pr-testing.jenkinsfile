@@ -2,6 +2,12 @@ pipeline {
     agent any
 
     stages {
+        stage ('install requironment') {
+            steps {
+                sh 'pip install pytest pylint'
+            }
+        }
+
         stage('Unittest') {
             steps {
                 sh '''
