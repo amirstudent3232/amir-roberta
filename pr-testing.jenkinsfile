@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage ('install requirement   ') {
+        stage ('install requirement') {
             steps {
                 sh 'pip install pytest pylint'
             }
