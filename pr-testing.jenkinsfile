@@ -2,6 +2,12 @@ pipeline {
     agent any
 
     stages {
+        stage ('install requironment') {
+            steps {
+                sh 'pip install pytest pylint'
+            }
+        }
+
         stage('Unittest') {
             steps {
                 sh '''
@@ -18,7 +24,7 @@ pipeline {
         }
         stage('Lint') {
             steps {
-                sh 'python3 -m pylint -f parseable --reports=no *.py > pylint.log'
+                sh 'python3 -m pylint *.py'
             }
         }
         stage('Functional test') {
